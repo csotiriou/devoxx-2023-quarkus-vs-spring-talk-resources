@@ -1,6 +1,6 @@
 # Battle of the frameworks : Quarkus vs SpringBoot tech talk resources
 
-Supplementary code and resources for Devoxx May 2023, the event that was performed in Greece. Code for Spring and Quarkus developed by Red Hat's https://github.com/geoand
+Supplementary code and resources for Devoxx May 2023, the event that was performed in Greece. Code for Spring and Quarkus developed by Red Hat's [Georgios Andrianakis](https://github.com/geoand)
 
 The talk was named **Battle of the frameworks : Quarkus vs SpringBoot**
 
