@@ -1,0 +1,11 @@
+version: '3.9'
+services:
+  springbootwebflux:
+    image: csotiriou/dvx2023mayathens:spring
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - "8080:8080"
+    cpus: 0.3
+    mem_limit: 300m

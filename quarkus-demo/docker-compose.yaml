@@ -1,0 +1,12 @@
+version: '3.9'
+services:
+  quarkus:
+    image: csotiriou/dvx2023mayathens:quarkus
+
+    build:
+      context: .
+      dockerfile: ./src/main/docker/Dockerfile.jvm
+    ports:
+      - "9080:8080"
+    cpus: 0.3
+    mem_limit: 300m

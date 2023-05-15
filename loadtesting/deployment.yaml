@@ -1,0 +1,87 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring-demo
+  labels:
+    app: spring-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: spring-demo
+  template:
+    metadata:
+      labels:
+        app: spring-demo
+    spec:
+      containers:
+        - name: spring
+          imagePullPolicy: IfNotPresent
+          image: csotiriou/dvx2023mayathens:spring
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              cpu: 300m
+              memory: 300Mi
+            requests:
+              cpu: 300m
+              memory: 300Mi
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quarkus-demo
+  labels:
+    app: quarkus-demo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: quarkus-demo
+  template:
+    metadata:
+      labels:
+        app: quarkus-demo
+    spec:
+      containers:
+        - name: quarkus
+          imagePullPolicy: IfNotPresent
+          image: csotiriou/dvx2023mayathens:quarkus-alt
+          ports:
+            - containerPort: 8080
+          resources:
+            limits:
+              cpu: 300m
+              memory: 300Mi
+            requests:
+              cpu: 300m
+              memory: 300Mi
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring-demo-service
+spec:
+  selector:
+    app: spring-demo
+  ports:
+    - protocol: TCP
+      port: 8080
+      targetPort: 8080
+  type: ClusterIP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: quarkus-demo-service
+spec:
+  selector:
+    app: quarkus-demo
+  ports:
+    - protocol: TCP
+      port: 8090
+      targetPort: 8080
+  type: ClusterIP
